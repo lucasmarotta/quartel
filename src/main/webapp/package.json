@@ -1,0 +1,13 @@
+{
+  "name": "quartel",
+  "version": "0.1.0",
+  "description": "Quartel App para Lab Web",
+  "main": "public/js/main.js",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "4.0.0-beta",
+    "jquery": "^3.2.1",
+    "popper.js": "^1.11.1"
+  }
+}
