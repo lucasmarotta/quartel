@@ -63,11 +63,13 @@ Este projeto foi desenvolvido com o framework [Spring Boot](http://projects.spri
 ## Instruções:
 
 #### Para executar o programa: 
- - Tenha certeza que já baixou as dependências pelo Gradle no Eclipse. 
- - Verifique se a perspectiva do Spring está aberta
+ - Importe para o workspace do eclipse como um projeto Gradle.
+ - Tenha certeza que já baixou as dependências pelo Gradle no Eclipse. (Refresh Gradle Project)
+ - Verifique se a perspectiva do Spring está aberta.
  - No menu "Boot Dashboard" escolha o projeto e clique em no play para rodar o serviço em localhost:8080
 
 #### Para instalar dependências com Yarn:
+ - Para configurar a pasta public/vendor execute: `yarn install --modules-folder public/vendor` na pasta "webapp"
  - A pasta node_modules foi customizada para public/vendor então para adicionar dependências use `yarn add [package]@[version] --modules-folder public/vendor`
 
 Se você não estiver vendo o menu Boot Dashboard vá em Window > Show View > Other > Spring > Boot Dashboard
