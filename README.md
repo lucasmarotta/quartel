@@ -25,7 +25,6 @@ Este projeto foi desenvolvido com o framework [Spring Boot](http://projects.spri
         |   |                   |-- app
         |   |                   |   |-- WebApp.java
         |   |                   |-- controllers
-        |   |                   |   |-- Controllers
         |   |                   |-- forms
         |   |                   |-- models
         |   |                   |-- utils
