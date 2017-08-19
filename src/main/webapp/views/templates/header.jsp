@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
     <title>Quartel</title>
-    <link rel="stylesheet" href="public/vendor/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="public/vendor/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="public/css/main.css">
 </head>
 <body>

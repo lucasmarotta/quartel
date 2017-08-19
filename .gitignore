@@ -24,7 +24,3 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
-
-### YARN ###
-src/main/webapp/public/vendor/
-src/main/webapp/yarn.lock
