@@ -66,6 +66,7 @@ Este projeto foi desenvolvido com o framework MVC [Spring Boot](http://projects.
  - Tenha certeza que já baixou as dependências pelo Gradle no Eclipse. (Refresh Gradle Project)
  - Verifique se a perspectiva do Spring está aberta.
  - No menu "Boot Dashboard" escolha o projeto e clique em no play para rodar o serviço em localhost:8080
+ - Para manusear o diagrama de classes em models.ucls instale o plugin [Object AID](http://www.objectaid.com/installation) no Eclipse. Para usar Basta arrastar a classe para o arquivo
 
 Se você não estiver vendo o menu Boot Dashboard vá em Window > Show View > Other > Spring > Boot Dashboard
 
