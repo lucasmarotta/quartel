@@ -28,7 +28,7 @@ public class Cautela
 	@JoinColumn(name="id_material")
 	private Material material;
 	
-	private LocalDateTime dataSaida;
+	private LocalDateTime dataRetirada;
 	private LocalDateTime dataDevolucao;
 	private Integer qtd;
 	
@@ -72,14 +72,14 @@ public class Cautela
 		this.material = material;
 	}
 	
-	public LocalDateTime getDataSaida() 
+	public LocalDateTime getDataRetirada() 
 	{
-		return dataSaida;
+		return dataRetirada;
 	}
 	
-	public void setDataSaida(LocalDateTime dataSaida) 
+	public void setDataRetirada(LocalDateTime dataRetirada) 
 	{
-		this.dataSaida = dataSaida;
+		this.dataRetirada = dataRetirada;
 	}
 	
 	public LocalDateTime getDataDevolucao() 
@@ -106,6 +106,6 @@ public class Cautela
 	public String toString() 
 	{
 		return "Cautela [id=" + id + ", reserva=" + reserva + ", militar=" + militar + ", material=" + material
-				+ ", dataSaida=" + dataSaida + ", dataDevolucao=" + dataDevolucao + ", qtd=" + qtd + "]";
+				+ ", dataRetirada=" + dataRetirada + ", dataDevolucao=" + dataDevolucao + ", qtd=" + qtd + "]";
 	}
 }

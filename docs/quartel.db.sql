@@ -57,7 +57,7 @@ CREATE TABLE `cautela` (
   `id_reserva` int(10) UNSIGNED NOT NULL,
   `id_militar` int(10) UNSIGNED NOT NULL,
   `id_material` int(10) UNSIGNED NOT NULL,
-  `data_saida` datetime NOT NULL,
+  `data_retirada` datetime NOT NULL,
   `data_devolucao` datetime NOT NULL,
   `qtd` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
