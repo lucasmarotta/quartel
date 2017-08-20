@@ -3,19 +3,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <c:set var="basePath" value="${pageContext.request.contextPath}"/>
-<c:set var="curPage" value="${requestScope['javax.servlet.forward.request_uri']}"/>']}"/>
+<c:set var="curPage" value="${requestScope['javax.servlet.forward.request_uri']}"/>
 
-<jsp:include page="templates/header.jsp" />
+<jsp:include page="../templates/header.jsp" />
 
 
 	<div class="container">
 		<div class="card">
 			<div class="card-header">
-				<h4 class="card-title">Configuração Inicial - Cadastra-se como usuário</h4>
+				<h4 class="card-title">${hideMenu ? 'Configuração Inicial - Cadastre seus dados militares': 'Cadastro de militar'}</h4>
 			</div>
 			<div class="card-body">
 				
-				<form action="${basePath}/registra_usuario_inicial_form" method="POST">
+				<form action="${basePath}${hideMenu ? '/login/registra_militar_inicial_form': '/militar/cadastra_militar_form'}" method="POST">
 					
 					<div class="form-group">
 						<div class="input-group">
@@ -52,8 +52,15 @@
 						</div>
 					</div>					
 					
-					<button type="submit" class="btn btn-green">Prosseguir <span class="fa fa-arrow-right"></span></button>
-
+					<c:choose>
+					    <c:when test="${hideMenu}">
+					        <button type="submit" class="btn btn-green">Prosseguir <span class="fa fa-arrow-right"></span></button>
+					    </c:when>
+					    <c:otherwise>
+					        <button type="submit" class="btn btn-block btn-green">Cadastrar</button>
+					    </c:otherwise>
+					</c:choose>
+					
 				</form>
 
 			</div>
@@ -61,4 +68,4 @@
 	</div>
 
 
-<jsp:include page="templates/footer.jsp" />
+<jsp:include page="../templates/footer.jsp" />

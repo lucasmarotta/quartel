@@ -21,6 +21,11 @@ public class UsuarioService
 		return usuarioRepo.findByLogin(login);
 	}
 	
+	public boolean usuarioExists(String login)
+	{
+		return usuarioRepo.findByLogin(login) != null ? true:false;
+	}
+	
 	public long countUsuarios()
 	{
 		return usuarioRepo.count();

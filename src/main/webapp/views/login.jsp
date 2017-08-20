@@ -1,5 +1,7 @@
 <%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <c:set var="basePath" value="${pageContext.request.contextPath}"/>
 <c:set var="curPage" value="${requestScope['javax.servlet.forward.request_uri']}"/>
 
@@ -28,15 +30,12 @@
 		<div class="row">
 			<form class="form-box margin-top-100" action="${basePath}/login" method="POST">
 				<h3>LOGIN</h3>
-			<!-- name field -->
 				<div class="form-group">
-					<label class="sr-only">Usuário</label>
 					<div class="input-group">
 						<div class="input-group-addon"><span class="fa fa-user"></span></div>
 						<input type="text" class="form-control" name="login" value="" placeholder="Usuário" required>
 					</div>
 				</div>
-			<!-- email field -->
 				<div class="form-group">
 					<label class="sr-only">Senha</label>
 					<div class="input-group">
@@ -44,7 +43,12 @@
 						<input type="password" class="form-control" name="senha" value="" placeholder="Senha" required>
 					</div>
 				</div>
-				<button type="submit" class="btn btn-green">Entrar</button>
+				<button type="submit" class="btn btn-block btn-green" style="margin-bottom:10px; display: block">Entrar</button>
+				<c:if test="${param.error}">
+					<br><div class="alert alert-danger" role="alert">
+					  Login e/ou senha incorretos
+					</div> 
+				</c:if>
 			</form>
 		</div>
 	</div>

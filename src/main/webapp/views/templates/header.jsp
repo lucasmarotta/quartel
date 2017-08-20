@@ -1,5 +1,7 @@
 <%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <c:set var="basePath" value="${pageContext.request.contextPath}"/>
 <c:set var="curPage" value="${requestScope['javax.servlet.forward.request_uri']}"/>
 
@@ -17,7 +19,7 @@
 <body>
 
 	<div class="container">
-		<div class="card menu">
+		<div class="card menu" ${hideMenu ? 'hidden':''}>
 
 			<div class="card-header">
 				<h3 class="card-title color-green">
