@@ -66,3 +66,5 @@ Se você não estiver vendo o menu Boot Dashboard vá em Window > Show View > Ot
  - http://www.devmedia.com.br/desenvolvendo-uma-aplicacao-web-com-spring-boot-e-spring-mvc/34122
  - https://www.tutorialspoint.com/spring/
  - https://www.tutorialspoint.com/hibernate/
+ - https://hellokoding.com/registration-and-login-example-with-spring-security-spring-boot-spring-data-jpa-hsql-jsp/
+ - https://medium.com/@gustavo.ponce.ch/spring-boot-spring-mvc-spring-security-mysql-a5d8545d837d
