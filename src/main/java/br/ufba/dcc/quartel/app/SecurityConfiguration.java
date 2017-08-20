@@ -22,13 +22,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
     private UserDetailsService userDetailsService;
 
 	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception 
+	public void configure(AuthenticationManagerBuilder auth) throws Exception 
 	{
 		auth.userDetailsService(userDetailsService).passwordEncoder(encoder);
 	}
 	
 	@Override
-	protected void configure(HttpSecurity http) throws Exception 
+	public void configure(HttpSecurity http) throws Exception 
 	{
 		http
 			.authorizeRequests()
