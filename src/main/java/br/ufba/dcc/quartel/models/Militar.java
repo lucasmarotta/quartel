@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Militar 
@@ -18,7 +19,7 @@ public class Militar
 	@JoinColumn(name="id_reserva")
 	private Reserva reserva;
 	
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name="id_usuario")
 	private Usuario usuario;
 	

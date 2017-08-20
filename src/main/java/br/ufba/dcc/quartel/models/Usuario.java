@@ -1,5 +1,6 @@
 package br.ufba.dcc.quartel.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,10 +14,13 @@ public class Usuario
 	private Integer id;
 	
 	private String nome;
+	
+	@Column(unique=true)
 	private String login;
-	private String salt;
+	
 	private String senha;
 	private String email;
+	private Boolean ativo;
 	
 	public Integer getId() 
 	{
@@ -48,16 +52,6 @@ public class Usuario
 		this.login = login;
 	}
 	
-	public String getSalt() 
-	{
-		return salt;
-	}
-	
-	public void setSalt(String salt) 
-	{
-		this.salt = salt;
-	}
-	
 	public String getSenha() 
 	{
 		return senha;
@@ -78,10 +72,20 @@ public class Usuario
 		this.email = email;
 	}
 
+	public Boolean getAtivo() 
+	{
+		return ativo;
+	}
+
+	public void setAtivo(Boolean ativo) 
+	{
+		this.ativo = ativo;
+	}
+
 	@Override
 	public String toString() 
 	{
-		return "Usuario [id=" + id + ", nome=" + nome + ", login=" + login + ", salt=" + salt + ", senha=" + senha
-				+ ", email=" + email + "]";
+		return "Usuario [id=" + id + ", nome=" + nome + ", login=" + login + ", senha=" + senha + ", email=" + email
+				+ ", ativo=" + ativo + "]";
 	}
 }

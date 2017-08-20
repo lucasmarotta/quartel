@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 19-Ago-2017 às 22:33
+-- Generation Time: 20-Ago-2017 às 06:00
 -- Versão do servidor: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -145,10 +145,17 @@ CREATE TABLE `usuario` (
   `id` int(10) UNSIGNED NOT NULL,
   `nome` varchar(144) NOT NULL,
   `login` varchar(25) NOT NULL,
-  `salt` varchar(255) NOT NULL,
-  `senha` varchar(255) NOT NULL,
+  `senha` varchar(80) NOT NULL,
   `email` varchar(144) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `usuario`
+--
+
+-- Senha do root: root@quartel
+INSERT INTO `usuario` (`id`, `nome`, `login`, `senha`, `email`) VALUES
+(1, 'root', 'root', 'FD26BC6A640CFA104CB319728FD171008635A7A9D3B090A5E17772208DDE8D81C98C1626A27162A9', 'root');
 
 --
 -- Indexes for dumped tables
@@ -252,7 +259,7 @@ ALTER TABLE `tipo_material`
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- Constraints for dumped tables
 --

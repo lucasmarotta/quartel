@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@ComponentScan(basePackages = {"br.ufba.dcc.quartel.app", "br.ufba.dcc.quartel.controllers",})
+@ComponentScan(basePackages = {"br.ufba.dcc.quartel.app", "br.ufba.dcc.quartel.controllers", "br.ufba.dcc.quartel.services"})
 @EnableJpaRepositories("br.ufba.dcc.quartel.repositories")
 @EntityScan("br.ufba.dcc.quartel.models")
 @SpringBootApplication

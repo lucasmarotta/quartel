@@ -13,7 +13,6 @@ Este projeto foi desenvolvido com o framework MVC [Spring Boot](http://projects.
 
 ```
 |-- Quartel
-    |-- README.md
     |-- src
         |-- main
         |   |-- java
@@ -22,38 +21,26 @@ Este projeto foi desenvolvido com o framework MVC [Spring Boot](http://projects.
         |   |           |-- dcc
         |   |               |-- quartel
         |   |                   |-- app
-        |   |                   |   |-- WebApp.java
+        |   |                   |   |-- WebApp.java /* Classe MAIN */
         |   |                   |-- controllers /* Controllers com as rotas da aplicação */
-        |   |                   |-- forms
+        |   |                   |-- forms /* Classes para lidar com validação de formulários */
         |   |                   |-- models /* Mapeamento das entidades do banco */
                                 |-- repositories /* Interfaces das entidades que já implementam todos os métodos CRUD */
-        |   |                   |-- utils
+        |   |                   |-- utils /* Alguns utilitários */
         |   |-- resources
-        |   |   |-- application.properties
-        |   |   |-- static
-        |   |   |-- templates
+        |   |   |-- application.properties /* Arquivo de configuração do spring */
         |   |-- webapp
         |       |-- public
         |       |   |-- css
-        |       |   |   |-- main.css
         |       |   |-- img
         |       |   |-- js
-        |       |   |   |-- main.js
         |       |   |-- media
         |       |   |-- uploads
         |       |   |-- vendor /*MÓDULOS DE TERCEIROS*/
         |       |-- views
-        |           |-- login.jsp
         |           |-- templates /*JSP TEMPLATES*/
         |               |-- footer.jsp
         |               |-- header.jsp
-        |-- test
-            |-- java
-                |-- br
-                    |-- dcc
-                        |-- ufba
-                            |-- quartel
-                                |-- WebAppTests.java
 
 ```
 
@@ -62,9 +49,9 @@ Este projeto foi desenvolvido com o framework MVC [Spring Boot](http://projects.
 #### Para executar o programa: 
  - Com acesso ao seu MySql crie um usuário novo chamado quartel_user com senha hq@quartel. Defina a máquina de acesso como localhost
  - Em seguida seguida importe o banco de dados com o arquivo quartel.db.sql na pasta docs.
- - Importe para o workspace do eclipse como um projeto Gradle.
+ - Importe o projeto para o workspace do eclipse como um projeto Gradle (Existing Gradle Project).
  - Tenha certeza que já baixou as dependências pelo Gradle no Eclipse. (Refresh Gradle Project)
- - Verifique se a perspectiva do Spring está aberta.
+ - Verifique se a perspectiva do Spring está aberta (No canto da janela com Open Perspetive).
  - No menu "Boot Dashboard" escolha o projeto e clique em no play para rodar o serviço em localhost:8080
  - Para manusear o diagrama de classes em models.ucls instale o plugin [Object AID](http://www.objectaid.com/installation) no Eclipse. Para usar Basta arrastar a classe para o arquivo
 

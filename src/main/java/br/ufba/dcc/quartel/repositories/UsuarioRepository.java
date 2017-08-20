@@ -6,5 +6,5 @@ import br.ufba.dcc.quartel.models.Usuario;
 
 public interface UsuarioRepository extends CrudRepository<Usuario, Long>
 {
-	
+	Usuario findByLogin(String login);
 }
