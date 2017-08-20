@@ -14,7 +14,6 @@ public class ReservaController extends BaseController
 	{
 		ModelAndView mv = new ModelAndView();
 		Usuario usuario = getLoggedUsuario();
-		System.out.println(usuario);
 		mv.addObject("usuario", usuario);
 		mv.setViewName("reserva/listar_reserva");
 		return mv;
