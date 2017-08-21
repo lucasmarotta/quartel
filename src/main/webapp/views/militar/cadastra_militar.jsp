@@ -11,47 +11,63 @@
 	<div class="container">
 		<div class="card">
 			<div class="card-header">
-				<h4 class="card-title">${hideMenu ? 'Configuração Inicial - Cadastre seus dados militares': 'Cadastro de militar'}</h4>
+				<h4 class="card-title">${hideMenu ? 'Configuração Inicial - Cadastra seus dados de militar': 'Cadastro de militar'}</h4>
 			</div>
 			<div class="card-body">
 				
-				<form action="${basePath}${hideMenu ? '/login/registra_militar_inicial_form': '/militar/cadastra_militar_form'}" method="POST">
-					
-					<div class="form-group">
-						<div class="input-group">
-							<span class="input-group-addon fa fa-user"></span>
-							<input type="text" name="login" class="form-control" placeholder="Login" required>							
-						</div>
-					</div>
+				<form:form action="${basePath}${hideMenu ? '/login/registra_militar_inicial': '/militar/cadastra_militar'}" method="POST" modelAttribute="usuarioForm">
 
-					<div class="form-group">
-						<div class="input-group">
-							<span class="input-group-addon fa fa-user"></span>
-							<input type="text" name="nome" class="form-control" placeholder="Nome" required>							
+					<spring:bind path="login">
+						<div class="form-group">
+							<div class="input-group ${status.error ? 'is-invalid':''}">
+								<span class="input-group-addon fa fa-user"></span>
+								<form:input type="text" path="login" class="form-control ${status.error ? 'is-invalid':''}" placeholder="Login" required="true"></form:input>
+							</div>
+							<div class="invalid-feedback ${status.error ? 'is-invalid':''}"><form:errors path="login"></form:errors></div>
 						</div>
-					</div>					
+					</spring:bind>
 
-					<div class="form-group">
-						<div class="input-group">
-							<span class="input-group-addon fa fa-lock"></span>
-							<input type="text" name="senha" class="form-control" placeholder="Senha" required>							
+					<spring:bind path="nome">
+						<div class="form-group">
+							<div class="input-group ${status.error ? 'is-invalid':''}">
+								<span class="input-group-addon fa fa-user"></span>
+								<form:input type="text" path="nome" class="form-control ${status.error ? 'is-invalid':''}" placeholder="Nome" required="true"></form:input>
+							</div>
+							<div class="invalid-feedback ${status.error ? 'is-invalid':''}"><form:errors path="nome"></form:errors></div>
 						</div>
-					</div>					
+					</spring:bind>					
 
-					<div class="form-group">
-						<div class="input-group">
-							<span class="input-group-addon fa fa-lock"></span>
-							<input type="text" name="senha_confirma" class="form-control" placeholder="Confirme a senha" required>							
+					<spring:bind path="senha">
+						<div class="form-group">
+							<div class="input-group ${status.error ? 'is-invalid':''}">
+								<span class="input-group-addon fa fa-lock"></span>
+								<form:input type="password" path="senha" class="form-control ${status.error ? 'is-invalid':''}" placeholder="Senha" required="true"></form:input>
+							</div>
+							<div class="invalid-feedback ${status.error ? 'is-invalid':''}"><form:errors path="senha"></form:errors></div>
 						</div>
-					</div>
+					</spring:bind>
 
-					<div class="form-group">
-						<div class="input-group">
-							<span class="input-group-addon fa fa-envelope"></span>
-							<input type="text" name="email" class="form-control" placeholder="Email" required>							
+					<spring:bind path="senhaConfirma">
+						<div class="form-group">
+							<div class="input-group ${status.error ? 'is-invalid':''}">
+								<span class="input-group-addon fa fa-lock"></span>
+								<form:input type="password" path="senhaConfirma" class="form-control ${status.error ? 'is-invalid':''}" placeholder="Confirme a senha" required="true"></form:input>
+							</div>
+							<div class="invalid-feedback ${status.error ? 'is-invalid':''}"><form:errors path="senhaConfirma"></form:errors></div>
 						</div>
-					</div>					
-					
+					</spring:bind>				
+
+
+					<spring:bind path="email">
+						<div class="form-group">
+							<div class="input-group ${status.error ? 'is-invalid':''}">
+								<span class="input-group-addon fa fa-envelope"></span>
+								<form:input type="text" path="email" class="form-control ${status.error ? 'is-invalid':''}" placeholder="Email" required="true"></form:input>
+							</div>
+							<div class="invalid-feedback ${status.error ? 'is-invalid':''}"><form:errors path="email"></form:errors></div>
+						</div>
+					</spring:bind>
+
 					<c:choose>
 					    <c:when test="${hideMenu}">
 					        <button type="submit" class="btn btn-green">Prosseguir <span class="fa fa-arrow-right"></span></button>
@@ -61,11 +77,10 @@
 					    </c:otherwise>
 					</c:choose>
 					
-				</form>
+				</form:form>
 
 			</div>
 		</div>
 	</div>
-
 
 <jsp:include page="../templates/footer.jsp" />

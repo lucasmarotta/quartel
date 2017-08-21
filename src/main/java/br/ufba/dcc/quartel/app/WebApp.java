@@ -9,7 +9,7 @@ import org.springframework.boot.context.embedded.MimeMappings;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@ComponentScan(basePackages = {"br.ufba.dcc.quartel.app", "br.ufba.dcc.quartel.controllers", "br.ufba.dcc.quartel.services"})
+@ComponentScan(basePackages = {"br.ufba.dcc.quartel.app", "br.ufba.dcc.quartel.controllers", "br.ufba.dcc.quartel.services", "br.ufba.dcc.quartel.forms"})
 @EnableJpaRepositories("br.ufba.dcc.quartel.repositories")
 @EntityScan("br.ufba.dcc.quartel.models")
 @SpringBootApplication

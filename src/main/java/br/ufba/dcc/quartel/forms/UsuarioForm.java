@@ -66,7 +66,7 @@ public class UsuarioForm
 		this.senha = senha;
 	}
 
-	public String getSenhaConfirma() 
+	public String getSenhaConfirma()
 	{
 		return senhaConfirma;
 	}

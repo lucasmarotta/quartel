@@ -32,7 +32,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
 	{
 		http
 			.authorizeRequests()
-				.antMatchers("/", "/login/**", "/public/**").permitAll()
+				.antMatchers("/", "/login/*", "/login/**", "/public/**").permitAll()
 				.anyRequest().authenticated().and().csrf().disable()
 			.formLogin().loginPage("/login").failureUrl("/login?error=true")
 				.defaultSuccessUrl("/reserva")

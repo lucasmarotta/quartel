@@ -1,33 +1,23 @@
 package br.ufba.dcc.quartel.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.ufba.dcc.quartel.models.Usuario;
-import br.ufba.dcc.quartel.services.UsuarioService;
+import br.ufba.dcc.quartel.services.SecurityService;
 
+@Controller
 public class BaseController 
 {
-	@Autowired
-	protected UsuarioService usuarioService;
 	protected ModelAndView mv;
+	
+    @Autowired
+    protected SecurityService securityService;
 	
 	public BaseController()
 	{
 		super();
 		mv = new ModelAndView();
 		mv.addObject("hideMenu",false);
-	}
-	
-	protected Usuario getLoggedUsuario()
-	{
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String login = auth.getName();
-		if(login != null) {
-			return usuarioService.findUsuarioByLogin(auth.getName());
-		}
-		return null;
 	}
 }

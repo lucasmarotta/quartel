@@ -13,7 +13,7 @@ public class ReservaController extends BaseController
 	public ModelAndView listarReserva()
 	{
 		ModelAndView mv = new ModelAndView();
-		Usuario usuario = getLoggedUsuario();
+		Usuario usuario = securityService.getLoggedUsuario();
 		mv.addObject("usuario", usuario);
 		mv.setViewName("reserva/listar_reserva");
 		return mv;
