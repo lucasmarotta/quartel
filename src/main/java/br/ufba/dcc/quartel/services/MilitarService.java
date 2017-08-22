@@ -16,6 +16,16 @@ public class MilitarService
 	@Autowired
 	private MilitarRepository militarRepo;
 	
+	public Militar findById(Integer id)
+	{
+		return militarRepo.findById(id);
+	}
+	
+	public List<Militar> findAll()
+	{
+		return militarRepo.findAll();
+	}
+	
 	public List<Militar> findByNomeGuerra(String nomeGuerra)
 	{
 		return militarRepo.findByNomeGuerra(nomeGuerra);

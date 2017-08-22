@@ -11,11 +11,15 @@
 	<div class="container">
 		<div class="card">
 			<div class="card-header">
-				<h4 class="card-title">${hideMenu ? 'Configuração Inicial - Cadastre uma reserva inicial': 'Cadastro de reserva'}</h4>
+				<h4 class="card-title">Edição de reserva</h4>
 			</div>
 			<div class="card-body">
 				
-				<form:form action="${basePath}${hideMenu ? '/login/registra_reserva_inicial': '/reserva/cadastrar'}" method="POST" modelAttribute="reservaForm">
+				<form:form action="${basePath}/reserva/editar" method="POST" modelAttribute="reservaForm">
+					
+					<spring:bind path="id">
+						<form:input type="hidden" path="id"></form:input>
+					</spring:bind>
 
 					<spring:bind path="sigla">
 						<div class="form-group">
@@ -37,14 +41,7 @@
 						</div>
 					</spring:bind>					
 
-					<c:choose>
-					    <c:when test="${hideMenu}">
-					        <button type="submit" class="btn btn-green">Prosseguir <span class="fa fa-arrow-right"></span></button>
-					    </c:when>
-					    <c:otherwise>
-					        <button type="submit" class="btn btn-block btn-green">Cadastrar</button>
-					    </c:otherwise>
-					</c:choose>
+					<button type="submit" class="btn btn-block btn-green">Salvar</button>
 					
 				</form:form>
 

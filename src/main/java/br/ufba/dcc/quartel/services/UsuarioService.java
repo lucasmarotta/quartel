@@ -18,7 +18,7 @@ public class UsuarioService
 	@Autowired
 	private CypherPassEncoder encoder;
 	
-	public Usuario findUsuarioById(Integer id)
+	public Usuario findById(Integer id)
 	{
 		return usuarioRepo.findById(id);
 	}
@@ -30,7 +30,7 @@ public class UsuarioService
 	
 	public List<Usuario> findAll()
 	{
-		return usuarioRepo.findByLoginNot("rootd");
+		return usuarioRepo.findByLoginNot("root");
 	}
 	
 	public List<Usuario> findUsuarioNotMilitar()
@@ -52,6 +52,21 @@ public class UsuarioService
 	{
 		usuario.setSenha(encoder.encode(usuario.getSenha()));
 		usuario.setAtivo(true);
+		usuarioRepo.save(usuario);
+	}
+	
+	public void update(Usuario usuario, boolean encodePass)
+	{
+		if(encodePass) {
+			usuario.setSenha(encoder.encode(usuario.getSenha()));
+		}
+		usuarioRepo.save(usuario);
+	}
+	
+	public void toggleUsuarioAtivo(Usuario usuario)
+	{
+		if(usuario.getAtivo()) usuario.setAtivo(false);
+		else usuario.setAtivo(true);
 		usuarioRepo.save(usuario);
 	}
 }

@@ -10,24 +10,30 @@
 	<div class="container">
 		<div class="card">
 			<div class="card-body">
-				<h3 class="card-title"><span class="fa fa-archive"></span> Reservas</h3>
-				<a href="${basePath}/reserva/cadastrar" class="btn btn-secondary float-right">Cadastrar Reserva</a>
+				<h3 class="card-title"><span class="fa fa-male"></span> Militares</h3>
+				<a href="${basePath}/militar/cadastrar" class="btn btn-secondary float-right">Cadastrar Militar</a>
 			</div>
 			<div class="card-body">
 				<table class="table table-striped table-bordered" cellspacing="0" width="100%">
 					<thead><tr>
-						<th>Sigla</th>
-						<th>Descrição</th>
-						<th style="width:50px;">Ação</th>
+						<th>Reserva</th>
+						<th>Login</th>
+						<th>Posto</th>
+						<th>Nome de Guerra</th>
+						<th style="width:50px;"></th>
 					</tr></thead>
 					<tbody>
-						<c:forEach items="${reservas}" var="reserva">
+
+						<c:forEach items="${militares}" var="militar">
 							<tr>
-								<td>${reserva.getSigla()}</td>
-								<td>${reserva.getDescricao()}</td>
-								<td class="action"><a href="${basePath}/reserva/editar?id=${reserva.getId()}"><span class="fa fa-pencil"></span></a></td>
+								<td>${militar.getReserva().getSigla()}</td>
+								<td>${militar.getUsuario().getLogin()}</td>
+								<td>${militar.getPosto().getNome()}</td>
+								<td>${militar.getNomeGuerra()}</td>
+								<td class="action"><a href="${basePath}/militar/editar?id=${militar.getId()}"><span class="fa fa-pencil"></span></a></td>
 							</tr>
 						</c:forEach>
+
 					</tbody>
 				</table>
 			</div>

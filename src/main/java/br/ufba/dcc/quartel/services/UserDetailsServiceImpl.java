@@ -23,7 +23,7 @@ public class UserDetailsServiceImpl implements UserDetailsService
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException 
 	{
-		Usuario usuario = usuarioRepo.findByLogin(username);
+		Usuario usuario = usuarioRepo.findByAtivoTrueAndLogin(username);
 		if(usuario != null) {
 			Set<GrantedAuthority> authorities = new HashSet<>();
 			return new User(usuario.getLogin(), usuario.getSenha(), authorities);			

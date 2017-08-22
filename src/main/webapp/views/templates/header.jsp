@@ -4,7 +4,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <c:set var="basePath" value="${pageContext.request.contextPath}"/>
 <c:set var="curPage" value="${requestScope['javax.servlet.forward.request_uri']}"/>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,21 +34,27 @@
 					</button>
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav mr-auto">
+							<li class="nav-item ${curPage.startsWith('/usuario') ? 'active':''}">
+								<a class="nav-link btn btn-lg btn-green" href="/usuario"><span class="fa fa-user"></span><br>Usuário</a>
+							</li>
 							<li class="nav-item ${curPage.startsWith('/reserva') ? 'active':''}">
-								<a class="nav-link btn btn-lg btn-green" href="#"><span class="fa fa-archive"></span><br>Reserva</a>
+								<a class="nav-link btn btn-lg btn-green" href="/reserva"><span class="fa fa-archive"></span><br>Reserva</a>
 							</li>
 							<li class="nav-item ${curPage.startsWith('/armamento') ? 'active':''}">
-								<a class="nav-link btn btn-lg btn-green" href="#"><span class="fa fa-fire"></span><br>Armamento</a>
+								<a class="nav-link btn btn-lg btn-green" href="/armamento"><span class="fa fa-fire"></span><br>Armamento</a>
 							</li>
 							<li class="nav-item ${curPage.startsWith('/municao') ? 'active':''}">
-								<a class="nav-link btn btn-lg btn-green" href="#"><span class="fa fa-bolt"></span><br>Munição</a>
+								<a class="nav-link btn btn-lg btn-green" href="/municao"><span class="fa fa-bolt"></span><br>Munição</a>
 							</li>
 							<li class="nav-item ${curPage.startsWith('/acessorio') ? 'active':''}">
-								<a class="nav-link btn btn-lg btn-green" href="#"><span class="fa fa-binoculars"></span><br>Acessórios</a>
+								<a class="nav-link btn btn-lg btn-green" href="/acessorio"><span class="fa fa-binoculars"></span><br>Acessórios</a>
 							</li>
 							<li class="nav-item ${curPage.startsWith('/militar') ? 'active':''}">
-								<a class="nav-link btn btn-lg btn-green" href="#"><span class="fa fa-male"></span><br>Militar</a>
-							</li>		      			      			      			      
+								<a class="nav-link btn btn-lg btn-green" href="/militar"><span class="fa fa-male"></span><br>Militar</a>
+							</li>
+							<li class="nav-item ${curPage.startsWith('/cautela') ? 'active':''}">
+								<a class="nav-link btn btn-lg btn-green" href="/cautela"><span class="fa fa-cubes"></span><br>Cautela</a>
+							</li>									      			      			      			      
 						</ul>
 					</div>
 				</nav>				

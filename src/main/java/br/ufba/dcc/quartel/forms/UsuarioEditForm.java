@@ -4,7 +4,9 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
@@ -12,8 +14,9 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import br.ufba.dcc.quartel.models.Usuario;
 
-public class UsuarioForm 
+public class UsuarioEditForm 
 {
+	@Min(2)
 	private Integer id;
 	
 	@NotNull
@@ -26,14 +29,10 @@ public class UsuarioForm
 	@Size(min=3, max=144)
 	private String nome;
 	
-	@NotNull
-	@NotEmpty
-	@Size(min=6, max=50)
+	@Pattern(message="Senha deve conter de 6 à 50 caracteres", regexp="^(\\s*|\\d{6,50})$")
 	private String senha;
 	
-	@NotNull
-	@NotEmpty
-	@Size(min=6, max=50)
+	@Pattern(message="Confirma senha deve conter de 6 à 50 caracteres", regexp="^(\\s*|\\d{6,50})$")
 	private String senhaConfirma;
 	
 	@NotNull
@@ -107,9 +106,9 @@ public class UsuarioForm
 		return senha.equals(senhaConfirma);
 	}
 	
-	public static UsuarioForm factoryUsuarioForm(Usuario usuario)
+	public static UsuarioEditForm factoryUsuarioForm(Usuario usuario)
 	{
-		UsuarioForm usuarioForm = new UsuarioForm();
+		UsuarioEditForm usuarioForm = new UsuarioEditForm();
 		usuarioForm.setId(usuario.getId());
 		usuarioForm.setLogin(usuario.getLogin());
 		usuarioForm.setNome(usuario.getNome());
@@ -125,7 +124,9 @@ public class UsuarioForm
 		}
 		usuario.setAtivo(true);
 		usuario.setLogin(login);
-		usuario.setSenha(senha);
+		if(senha != null) {
+			usuario.setSenha(senha);
+		}
 		usuario.setNome(nome);
 		usuario.setEmail(email);
 		return usuario;

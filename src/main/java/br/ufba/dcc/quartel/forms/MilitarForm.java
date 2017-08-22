@@ -9,27 +9,17 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.ufba.dcc.quartel.models.Militar;
 import br.ufba.dcc.quartel.models.MilitarPosto;
-import br.ufba.dcc.quartel.services.MilitarPostoService;
-import br.ufba.dcc.quartel.services.ReservaService;
-import br.ufba.dcc.quartel.services.UsuarioService;
 
 @Component
 public class MilitarForm
 {
-	@Autowired
-	private UsuarioService usuarioService;
+	@Min(0)
+	private Integer id;
 	
-	@Autowired
-	private ReservaService reservaService;
-	
-	@Autowired
-	private MilitarPostoService militarPostoService;
-
 	@NotNull
 	@Min(value=1, message="escolha uma reserva")
 	private Integer reserva;
@@ -46,6 +36,16 @@ public class MilitarForm
 	@Size(min=4, max=50)	
 	private String nomeGuerra;
 	
+	public Integer getId() 
+	{
+		return id;
+	}
+
+	public void setId(Integer id) 
+	{
+		this.id = id;
+	}
+
 	public Integer getReserva() 
 	{
 		return reserva;
@@ -86,6 +86,19 @@ public class MilitarForm
 		this.nomeGuerra = nomeGuerra;
 	}
 	
+	public static MilitarForm factoryMilitarForm(Militar militar)
+	{
+		MilitarForm militarForm = new MilitarForm();
+		militarForm.setNomeGuerra(militar.getNomeGuerra());
+		militarForm.setId(militar.getId());
+		militarForm.setPosto(militar.getPosto().getId());
+		militarForm.setReserva(militar.getReserva().getId());
+		if(militar.getUsuario() != null) {
+			militarForm.setUsuario(militar.getUsuario().getId());
+		}
+		return militarForm;
+	}
+	
 	public static Map<String,String> generatePostoSelect(List<MilitarPosto> postos)
 	{
 		Map<String, String> postoSelect = new LinkedHashMap<String, String>();
@@ -97,12 +110,12 @@ public class MilitarForm
 			}			
 		}
 		return postoSelect;
-	}	
+	}
 
 	@Override
 	public String toString() 
 	{
-		return "MilitarForm [reserva=" + reserva + ", usuario=" + usuario + ", posto=" + posto
+		return "MilitarForm [id=" + id + ", reserva=" + reserva + ", usuario=" + usuario + ", posto=" + posto
 				+ ", nomeGuerra=" + nomeGuerra + "]";
 	}
 }

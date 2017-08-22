@@ -1,8 +1,6 @@
 package br.ufba.dcc.quartel.controllers;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -135,7 +133,7 @@ public class LoginController extends BaseController
 		} else {
 			
 			if(militarForm.getUsuario() != null && militarForm.getUsuario() > 0) {			
-				Usuario usuario = usuarioService.findUsuarioById(militarForm.getUsuario());
+				Usuario usuario = usuarioService.findById(militarForm.getUsuario());
 				if(usuario == null) {
 					bindingResult.rejectValue("usuario", "error.usuario", "Login não existe");
 				} else if(militarService.militarUsuarioExists(usuario)) {
@@ -160,7 +158,7 @@ public class LoginController extends BaseController
 				militar.setNomeGuerra(militarForm.getNomeGuerra());
 				militar.setUsuario(null);
 				if(militarForm.getUsuario() != null && militarForm.getUsuario() > 0) {
-					militar.setUsuario(usuarioService.findUsuarioById(militarForm.getUsuario()));
+					militar.setUsuario(usuarioService.findById(militarForm.getUsuario()));
 				}
 				militarService.save(militar);
 				mv.setViewName("redirect:/logout");
@@ -175,25 +173,4 @@ public class LoginController extends BaseController
 	{
 		return "Acesso Negado";
 	}
-	
-	/* 
-	@GetMapping("/teste")
-	public String teste(Map<String, Object> model)
-	{
-		
-		Usuario usuario = new Usuario();
-		usuario.setLogin("test");
-		usuario.setNome("Testando");
-		usuario.setSalt("123456");
-		usuario.setSenha("132965494");
-		usuario.setEmail("test@mail.com");
-		usuarioRepository.save(usuario);
-		
-		ArrayList<String> test = new ArrayList<String>();
-		test.add("item 1");
-		test.add("item 2");
-		model.put("test", test);
-		return "login";
-	}
-	*/
 }

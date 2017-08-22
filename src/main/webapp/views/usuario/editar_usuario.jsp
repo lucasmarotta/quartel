@@ -11,11 +11,15 @@
 	<div class="container">
 		<div class="card">
 			<div class="card-header">
-				<h4 class="card-title">${hideMenu ? 'Configuração Inicial - Cadastra-se como usuário': 'Cadastro de usuário'}</h4>
+				<h4 class="card-title">Editar Usuário</h4>
 			</div>
 			<div class="card-body">
 				
-				<form:form action="${basePath}${hideMenu ? '/login/registra_usuario_inicial': '/usuario/cadastrar'}" method="POST" modelAttribute="usuarioForm">
+				<form:form action="${basePath}/usuario/editar" method="POST" modelAttribute="usuarioEditForm">
+					
+					<spring:bind path="id">
+						<form:input type="hidden" path="id"></form:input>
+					</spring:bind>
 
 					<spring:bind path="login">
 						<div class="form-group">
@@ -41,7 +45,7 @@
 						<div class="form-group">
 							<div class="input-group ${status.error ? 'is-invalid':''}">
 								<span class="input-group-addon fa fa-lock"></span>
-								<form:input type="password" path="senha" class="form-control ${status.error ? 'is-invalid':''}" placeholder="Senha" required="true"></form:input>
+								<form:input type="password" path="senha" class="form-control ${status.error ? 'is-invalid':''}" placeholder="Senha"></form:input>
 							</div>
 							<div class="invalid-feedback ${status.error ? 'is-invalid':''}"><form:errors path="senha"></form:errors></div>
 						</div>
@@ -51,7 +55,7 @@
 						<div class="form-group">
 							<div class="input-group ${status.error ? 'is-invalid':''}">
 								<span class="input-group-addon fa fa-lock"></span>
-								<form:input type="password" path="senhaConfirma" class="form-control ${status.error ? 'is-invalid':''}" placeholder="Confirme a senha" required="true"></form:input>
+								<form:input type="password" path="senhaConfirma" class="form-control ${status.error ? 'is-invalid':''}" placeholder="Confirme a senha"></form:input>
 							</div>
 							<div class="invalid-feedback ${status.error ? 'is-invalid':''}"><form:errors path="senhaConfirma"></form:errors></div>
 						</div>
@@ -68,14 +72,7 @@
 						</div>
 					</spring:bind>
 
-					<c:choose>
-					    <c:when test="${hideMenu}">
-					        <button type="submit" class="btn btn-green">Prosseguir <span class="fa fa-arrow-right"></span></button>
-					    </c:when>
-					    <c:otherwise>
-					        <button type="submit" class="btn btn-block btn-green">Cadastrar</button>
-					    </c:otherwise>
-					</c:choose>
+					<button type="submit" class="btn btn-block btn-green">Salvar</button>
 					
 				</form:form>
 

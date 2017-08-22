@@ -22,9 +22,7 @@ $(function(){
 	        sortAscending: ": Ordenar colunas de forma ascendente",
 	        sortDescending: ": Ordenar colunas de forma descendente"
 	    }
-	}
-
-	console.log(dataTableBr);
+	};
 
 	$('.table').DataTable({language:dataTableBr});
 });

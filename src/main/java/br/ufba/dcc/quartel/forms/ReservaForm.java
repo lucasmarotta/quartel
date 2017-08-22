@@ -13,6 +13,8 @@ import br.ufba.dcc.quartel.models.Reserva;
 
 public class ReservaForm 
 {
+	private Integer id;
+	
 	@NotNull
 	@NotEmpty
 	@Size(min=2, max=10)
@@ -23,6 +25,17 @@ public class ReservaForm
 	@Size(min=4, max=255)
 	private String descricao;
 	
+	
+	
+	public Integer getId() 
+	{
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	public String getSigla() 
 	{
 		return sigla;
@@ -46,6 +59,9 @@ public class ReservaForm
 	public Reserva generateReserva()
 	{
 		Reserva reserva = new Reserva();
+		if(id != null) {
+			reserva.setId(id);
+		}
 		reserva.setDescricao(descricao);
 		reserva.setSigla(sigla);
 		return reserva;
@@ -67,6 +83,6 @@ public class ReservaForm
 	@Override
 	public String toString() 
 	{
-		return "ReservaForm [sigla=" + sigla + ", descricao=" + descricao + "]";
+		return "ReservaForm [id=" + id + ", sigla=" + sigla + ", descricao=" + descricao + "]";
 	}
 }
