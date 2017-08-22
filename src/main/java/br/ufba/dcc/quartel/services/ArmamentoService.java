@@ -24,4 +24,16 @@ public class ArmamentoService
 	{
 		return armamentoRepo.findByTipoMaterialId(TipoMaterialEnum.ARMAMENTO.value);
 	}
+	
+	public void toggleArmamentoAtivo(Armamento armamento)
+	{
+		if(armamento.getAtivo()) armamento.setAtivo(false);
+		else armamento.setAtivo(true);
+		armamentoRepo.save(armamento);
+	}
+	
+	public void save(Armamento armamento)
+	{
+		armamentoRepo.save(armamento);
+	}
 }

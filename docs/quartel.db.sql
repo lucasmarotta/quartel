@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 22-Ago-2017 às 13:02
--- Versão do servidor: 10.1.25-MariaDB
--- PHP Version: 7.1.7
+-- Generation Time: 22-Ago-2017 às 22:43
+-- Versão do servidor: 10.1.13-MariaDB
+-- PHP Version: 7.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -102,6 +100,32 @@ CREATE TABLE `militar_posto` (
   `nome` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Extraindo dados da tabela `militar_posto`
+--
+
+INSERT INTO `militar_posto` (`id`, `nome`) VALUES
+(13, '1º Sargento'),
+(9, '1º Tenente'),
+(14, '2º Sargento'),
+(10, '2º Tenente'),
+(15, '3º Sargento'),
+(11, 'Aspirante a Oficial'),
+(17, 'Cabo'),
+(8, 'Capitão'),
+(5, 'Coronel'),
+(4, 'General de Brigada'),
+(3, 'General de Divisão'),
+(2, 'General de Exército'),
+(7, 'Major'),
+(1, 'Marechal'),
+(20, 'Soldado'),
+(12, 'Subtenente'),
+(18, 'Taifeiro de 1º Classe'),
+(19, 'Taifeiro de 2º Classe'),
+(16, 'Taifeiro-Mor'),
+(6, 'Tenente-Coronel');
+
 -- --------------------------------------------------------
 
 --
@@ -137,6 +161,15 @@ CREATE TABLE `tipo_material` (
   `nome` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Extraindo dados da tabela `tipo_material`
+--
+
+INSERT INTO `tipo_material` (`id`, `nome`) VALUES
+(3, 'acessório'),
+(1, 'armamento'),
+(2, 'munição');
+
 -- --------------------------------------------------------
 
 --
@@ -156,7 +189,6 @@ CREATE TABLE `usuario` (
 -- Extraindo dados da tabela `usuario`
 --
 
--- Senha root@quartel
 INSERT INTO `usuario` (`id`, `nome`, `login`, `senha`, `email`, `ativo`) VALUES
 (1, 'root', 'root', 'FD26BC6A640CFA104CB319728FD171008635A7A9D3B090A5E17772208DDE8D81C98C1626A27162A9', 'root', 1);
 
@@ -255,7 +287,7 @@ ALTER TABLE `material`
 -- AUTO_INCREMENT for table `militar`
 --
 ALTER TABLE `militar`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `militar_posto`
 --
@@ -265,7 +297,7 @@ ALTER TABLE `militar_posto`
 -- AUTO_INCREMENT for table `reserva`
 --
 ALTER TABLE `reserva`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tipo_material`
 --
@@ -275,7 +307,7 @@ ALTER TABLE `tipo_material`
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- Constraints for dumped tables
 --
@@ -321,7 +353,6 @@ ALTER TABLE `militar`
 --
 ALTER TABLE `municao`
   ADD CONSTRAINT `fk_municao_material` FOREIGN KEY (`id`) REFERENCES `material` (`id`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

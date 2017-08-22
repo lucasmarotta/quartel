@@ -12,15 +12,15 @@
 <div class="container">
 	<div class="card">
 		<div class="card-header">
-			<h4 class="card-title">Editar Militar</h4>
+			<h4 class="card-title">Editar Armamento</h4>
 		</div>
 		<div class="card-body">
 
-			<form:form action="${basePath}/militar/editar" method="POST"
-				modelAttribute="militarForm">
+			<form:form action="${basePath}/armamento/editar" method="POST"
+				modelAttribute="armamentoForm">
 
 				<spring:bind path="id">
-					<form:input type="hidden" path="id"></form:input>
+					<form:input path="id" type="hidden"></form:input>
 				</spring:bind>
 
 				<spring:bind path="reserva">
@@ -38,52 +38,49 @@
 					</div>
 				</spring:bind>
 
-				<c:if test="${!usuarioSelect.isEmpty()}">
-					<spring:bind path="usuario">
-						<div class="form-group">
-							<label for="usuario">Login ${usuarioSelect.size() > 1 ? 'Opcional':''}</label>
-							<div class="input-group ${status.error ? 'is-invalid':''}">
-								<span class="input-group-addon fa fa-user"></span>
-								<form:select path="usuario" items="${usuarioSelect}"
-									class="form-control ${status.error ? 'is-invalid':''}" />
-							</div>
-							<div class="invalid-feedback ${status.error ? 'is-invalid':''}">
-								<form:errors path="usuario"></form:errors>
-							</div>
-						</div>
-					</spring:bind>
-				</c:if>
-
-				<spring:bind path="posto">
+				<spring:bind path="serie">
 					<div class="form-group">
-						<label for="posto">Posto/Graduação</label>
 						<div class="input-group ${status.error ? 'is-invalid':''}">
-							<span class="input-group-addon fa fa-mortar-board"></span>
-							<form:select path="posto" items="${postoSelect}"
+							<span class="input-group-addon fa fa-barcode"></span>
+							<form:input type="text" path="serie"
 								class="form-control ${status.error ? 'is-invalid':''}"
-								required="true" />
+								placeholder="Descrição" required="true"></form:input>
 						</div>
 						<div class="invalid-feedback ${status.error ? 'is-invalid':''}">
-							<form:errors path="posto"></form:errors>
+							<form:errors path="serie"></form:errors>
 						</div>
 					</div>
 				</spring:bind>
 
-				<spring:bind path="nomeGuerra">
+				<spring:bind path="modelo">
 					<div class="form-group">
 						<div class="input-group ${status.error ? 'is-invalid':''}">
-							<span class="input-group-addon fa fa-male"></span>
-							<form:input type="text" path="nomeGuerra"
+							<span class="input-group-addon fa fa-tag"></span>
+							<form:input type="text" path="modelo"
 								class="form-control ${status.error ? 'is-invalid':''}"
-								placeholder="Nome de Guerra"></form:input>
+								placeholder="Modelo" required="true"></form:input>
 						</div>
 						<div class="invalid-feedback ${status.error ? 'is-invalid':''}">
-							<form:errors path="nomeGuerra"></form:errors>
+							<form:errors path="modelo"></form:errors>
 						</div>
 					</div>
 				</spring:bind>
 
-				<button type="submit" class="btn btn-block btn-green">Cadastrar</button>
+				<spring:bind path="fabricante">
+					<div class="form-group">
+						<div class="input-group ${status.error ? 'is-invalid':''}">
+							<span class="input-group-addon fa fa-tag"></span>
+							<form:input type="text" path="fabricante"
+								class="form-control ${status.error ? 'is-invalid':''}"
+								placeholder="Fabricante" required="true"></form:input>
+						</div>
+						<div class="invalid-feedback ${status.error ? 'is-invalid':''}">
+							<form:errors path="fabricante"></form:errors>
+						</div>
+					</div>
+				</spring:bind>
+
+				<button type="submit" class="btn btn-block btn-green">Salvar</button>
 
 			</form:form>
 
