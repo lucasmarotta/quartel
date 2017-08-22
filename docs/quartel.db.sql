@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 20-Ago-2017 às 06:00
+-- Generation Time: 22-Ago-2017 às 13:02
 -- Versão do servidor: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -87,8 +87,19 @@ CREATE TABLE `militar` (
   `id` int(10) UNSIGNED NOT NULL,
   `id_reserva` int(10) UNSIGNED NOT NULL,
   `id_usuario` int(10) UNSIGNED DEFAULT NULL,
-  `posto` varchar(50) NOT NULL,
+  `id_posto` int(10) UNSIGNED NOT NULL,
   `nome_guerra` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `militar_posto`
+--
+
+CREATE TABLE `militar_posto` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `nome` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -126,15 +137,6 @@ CREATE TABLE `tipo_material` (
   `nome` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Extraindo dados da tabela `tipo_material`
---
-
-INSERT INTO `tipo_material` (`id`, `nome`) VALUES
-(3, 'acessório'),
-(1, 'armamento'),
-(2, 'munição');
-
 -- --------------------------------------------------------
 
 --
@@ -146,16 +148,17 @@ CREATE TABLE `usuario` (
   `nome` varchar(144) NOT NULL,
   `login` varchar(25) NOT NULL,
   `senha` varchar(80) NOT NULL,
-  `email` varchar(144) NOT NULL
+  `email` varchar(144) NOT NULL,
+  `ativo` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `usuario`
 --
 
--- Senha do root: root@quartel
-INSERT INTO `usuario` (`id`, `nome`, `login`, `senha`, `email`) VALUES
-(1, 'root', 'root', 'FD26BC6A640CFA104CB319728FD171008635A7A9D3B090A5E17772208DDE8D81C98C1626A27162A9', 'root');
+-- Senha root@quartel
+INSERT INTO `usuario` (`id`, `nome`, `login`, `senha`, `email`, `ativo`) VALUES
+(1, 'root', 'root', 'FD26BC6A640CFA104CB319728FD171008635A7A9D3B090A5E17772208DDE8D81C98C1626A27162A9', 'root', 1);
 
 --
 -- Indexes for dumped tables
@@ -197,7 +200,15 @@ ALTER TABLE `material`
 ALTER TABLE `militar`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_militar_reserva` (`id_reserva`),
-  ADD KEY `fk_militar_usuario` (`id_usuario`);
+  ADD KEY `fk_militar_usuario` (`id_usuario`),
+  ADD KEY `fk_militar_posto` (`id_posto`);
+
+--
+-- Indexes for table `militar_posto`
+--
+ALTER TABLE `militar_posto`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `ux_militar_posto` (`nome`) USING BTREE;
 
 --
 -- Indexes for table `municao`
@@ -244,12 +255,17 @@ ALTER TABLE `material`
 -- AUTO_INCREMENT for table `militar`
 --
 ALTER TABLE `militar`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `militar_posto`
+--
+ALTER TABLE `militar_posto`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `reserva`
 --
 ALTER TABLE `reserva`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `tipo_material`
 --
@@ -259,7 +275,7 @@ ALTER TABLE `tipo_material`
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- Constraints for dumped tables
 --
@@ -296,6 +312,7 @@ ALTER TABLE `material`
 -- Limitadores para a tabela `militar`
 --
 ALTER TABLE `militar`
+  ADD CONSTRAINT `fk_militar_posto` FOREIGN KEY (`id_posto`) REFERENCES `militar_posto` (`id`),
   ADD CONSTRAINT `fk_militar_reserva` FOREIGN KEY (`id_reserva`) REFERENCES `reserva` (`id`),
   ADD CONSTRAINT `fk_militar_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`);
 

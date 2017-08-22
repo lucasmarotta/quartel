@@ -23,7 +23,6 @@ public class UserDetailsServiceImpl implements UserDetailsService
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException 
 	{
-		System.out.println(username);
 		Usuario usuario = usuarioRepo.findByLogin(username);
 		if(usuario != null) {
 			Set<GrantedAuthority> authorities = new HashSet<>();

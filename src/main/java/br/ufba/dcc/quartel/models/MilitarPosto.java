@@ -7,50 +7,38 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Reserva 
+public class MilitarPosto 
 {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 	
 	@Column(unique=true)
-	private String sigla;
-	
-	private String descricao;
-	
+	private String nome;
+
 	public Integer getId() 
 	{
 		return id;
 	}
-	
+
 	public void setId(Integer id) 
 	{
 		this.id = id;
 	}
-	
-	public String getSigla() 
+
+	public String getNome() 
 	{
-		return sigla;
+		return nome;
 	}
-	
-	public void setSigla(String sigla) 
+
+	public void setNome(String nome) 
 	{
-		this.sigla = sigla;
-	}
-	
-	public String getDescricao() 
-	{
-		return descricao;
-	}
-	
-	public void setDescricao(String descricao) 
-	{
-		this.descricao = descricao;
+		this.nome = nome;
 	}
 
 	@Override
 	public String toString() 
 	{
-		return "Reserva [id=" + id + ", sigla=" + sigla + ", descricao=" + descricao + "]";
+		return "MilitarPosto [id=" + id + ", nome=" + nome + "]";
 	}
 }

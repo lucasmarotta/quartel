@@ -14,6 +14,7 @@
     <title>Quartel</title>
     <link rel="stylesheet" href="${basePath}/public/vendor/font_awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="${basePath}/public/vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="${basePath}/public/vendor/datatables/datatables.min.css">
     <link rel="stylesheet" href="${basePath}/public/css/main.css">
 </head>
 <body>
@@ -23,7 +24,7 @@
 
 			<div class="card-header">
 				<h3 class="card-title color-green">
-					<span class="fa fa-home"></span> Quartel, ${usuario.getLogin()}
+					<span class="fa fa-home"></span> Quartel, ${usuario}
 					<a href="${basePath}/logout" class="color-green"><span class="fa fa-sign-out"></span> Sair</a>
 				</h3>
 			</div>

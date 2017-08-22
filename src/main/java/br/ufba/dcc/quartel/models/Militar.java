@@ -23,7 +23,10 @@ public class Militar
 	@JoinColumn(name="id_usuario")
 	private Usuario usuario;
 	
-	private String posto;
+	@ManyToOne
+	@JoinColumn(name="id_posto")
+	private MilitarPosto posto;
+	
 	private String nomeGuerra;
 	
 	public Integer getId() 
@@ -56,12 +59,12 @@ public class Militar
 		this.usuario = usuario;
 	}
 	
-	public String getPosto() 
+	public MilitarPosto getPosto() 
 	{
 		return posto;
 	}
 	
-	public void setPosto(String posto) 
+	public void setPosto(MilitarPosto posto) 
 	{
 		this.posto = posto;
 	}
@@ -82,6 +85,4 @@ public class Militar
 		return "Militar [id=" + id + ", reserva=" + reserva + ", usuario=" + usuario + ", posto=" + posto
 				+ ", nomeGuerra=" + nomeGuerra + "]";
 	}
-	
-	
 }

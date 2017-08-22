@@ -68,3 +68,4 @@ Se você não estiver vendo o menu Boot Dashboard vá em Window > Show View > Ot
  - https://www.tutorialspoint.com/hibernate/
  - https://hellokoding.com/registration-and-login-example-with-spring-security-spring-boot-spring-data-jpa-hsql-jsp/
  - https://medium.com/@gustavo.ponce.ch/spring-boot-spring-mvc-spring-security-mysql-a5d8545d837d
+ - http://source.lishman.com/project/689#card/3327/file/19199

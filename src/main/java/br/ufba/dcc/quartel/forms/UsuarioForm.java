@@ -1,5 +1,9 @@
 package br.ufba.dcc.quartel.forms;
 
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -100,6 +104,19 @@ public class UsuarioForm
 		usuario.setNome(nome);
 		usuario.setEmail(email);
 		return usuario;
+	}
+	
+	public static Map<String,String> generateUsuarioSelect(List<Usuario> usuarios)
+	{
+		Map<String, String> usuarioSelect = new LinkedHashMap<String, String>();
+		if(!usuarios.isEmpty()) {
+			usuarioSelect.put("0", "Selecione um usuário");
+			for (Usuario usuario : usuarios) 
+			{
+				usuarioSelect.put(usuario.getId().toString(), usuario.getLogin());
+			}			
+		}
+		return usuarioSelect;
 	}
 
 	@Override
